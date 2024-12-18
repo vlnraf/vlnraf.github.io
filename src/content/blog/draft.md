@@ -93,7 +93,7 @@ This isn't the final architecture, because sometimes during the developing proce
 This approach makes working on the game much easier because I'm not forced to recompile everything each time I do a minor change in the game. 
 Instead I can just compile only the game while the application is running, and then the application will reload the game without shutting it down. In the picture below i represented the flow of the project and the interaction between the components
 
-![Engine Flow](/first-devlog/Engine-Flow.png "Engine Architecture")
+![Engine Flow](/first-devlog/Engine-flow.png "Engine Flow")
 
 ## Conclusions and Result
 
