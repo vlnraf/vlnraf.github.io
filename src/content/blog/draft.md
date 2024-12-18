@@ -71,9 +71,9 @@ They all seem pretty complicated. Even though I'm working on Windows I've choose
 ## Overview
 This first dev log will cover high level stuffs, and in upcoming ones, I'll dive deeper into each component of my engine. I'm not starting the project at the same time I'm writing this dev log, I have already worked a bit on it, so I've made an initial structure to the project. Now probably those design choices might not be the best ones and probably I will change them in future, but right now that is what i have.
 
-![Engine Architecture](/public/first-devlog/Engine%20Architecture.png "Engine Architecture")
+![Engine Architecture](/public/first-devlog/Engine-Architecture.png "Engine Architecture")
 
-the picture above [Engine Architecture](/public/first-devlog/Engine%20Architecture.png), is the high-level architecure of the engine, it is divided in
+the picture above [Engine Architecture](/public/first-devlog/Engine-Architecture.png), is the high-level architecure of the engine, it is divided in
 
 #### Core
 The core library wich has basic tools for the engine and is compiled as a static library, used by the Renderer and the Game Kit
@@ -93,7 +93,7 @@ This isn't the final architecture, because sometimes during the developing proce
 This approach makes working on the game much easier because I'm not forced to recompile everything each time I do a minor change in the game. 
 Instead I can just compile only the game while the application is running, and then the application will reload the game without shutting it down. In the picture below i represented the flow of the project and the interaction between the components
 
-![Engine Flow](/public/first-devlog/Engine%20Flow.png "Engine Architecture")
+![Engine Flow](/public/first-devlog/Engine-Flow.png "Engine Architecture")
 
 ## Conclusions and Result
 
