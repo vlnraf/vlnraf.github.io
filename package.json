@@ -17,8 +17,11 @@
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.6.3",
     "astro-icon": "^0.8.2",
+    "katex": "^0.16.28",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
     "tailwindcss": "^3.3.6",
     "typescript": "^5.3.3"
   },

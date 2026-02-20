@@ -3,6 +3,9 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { remarkReadingTime } from './src/utils/remark-reading-time.mjs';
 
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
@@ -15,7 +18,8 @@ export default defineConfig({
     locales: ["en", "es"]
   },
   markdown: {
-    remarkPlugins: [remarkReadingTime],
+    remarkPlugins: [remarkReadingTime, remarkMath],
+    rehypePlugins: [rehypeKatex],
     syntaxHighlight: 'shiki',
     shikiConfig: {
       // https://docs.astro.build/en/guides/markdown-content/#syntax-highlighting

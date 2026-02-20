@@ -9,6 +9,7 @@ import CopyBtn from "@/components/CopyBtn";
 import Icon from "astro-icon";
 import { siteConfig } from "../consts";
 import { getLangFromUrl, useUITranslations } from "@/utils";
+import "katex/dist/katex.min.css";
 
 interface Props {
 	post: CollectionEntry<"blog">;
