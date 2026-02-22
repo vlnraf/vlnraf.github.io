@@ -54,6 +54,10 @@
     @apply bg-accent !text-surface px-1 py-0;
   }
 
+  pre.astro-code code {
+    color: var(--theme-text) !important;
+  }
+
   .prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *))::before{
     content: none !important;
   }

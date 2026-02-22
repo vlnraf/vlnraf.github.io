@@ -146,7 +146,7 @@ Let's start with encoding a MAC (staggered) grid into a computer. As we have see
 
 ### Advection
 I will show pseudocode to advect only the horizontal velocities, but the same process has to be applied to vertical velocities and every other quantity as well.
-```pseudocode
+```text
 for each j in rows:
     for each i in columns:
         float vy = vyPrev[i,j]
@@ -168,7 +168,7 @@ endfor
 ### Projection
 This is probably the most difficult algorithm to implement, because it involves a lot of math and requires a numerical solver as we discussed in the theory section. In the following pseudocode I show you the Gauss-Seidel algorithm to solve the Poisson equation, but feel free to experiment with other more sophisticated algorithms too. As always, feel free to take my code and modify it to experiment.
 I won't write out the function to calculate the divergence of a cell, but if you look at the *Discretized Operators* section, you will notice that it is a straightforward implementation.
-```pseudocode
+```text
 p[] stands for the array which contains pressure values
 
 for k < n //where n is the number of iterations needed to converge
@@ -191,7 +191,7 @@ endfor
 
 And finally the whole solver loop will be:
 
-```pseudocode
+```text
 solverStep(){
     advectVelocities();
     projection();
