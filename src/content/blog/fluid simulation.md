@@ -224,14 +224,14 @@ I won't go further, but in the code you will also find a simulator written in GP
 
 [^3]: https://developer.nvidia.com/gpugems/gpugems/part-vi-beyond-triangles/chapter-38-fast-fluid-dynamics-simulation-gpu
 
-[^4]: https://pages.cs.wisc.edu/~chaol/data/cs777/stam-stable_fluids.pdf
+- https://pages.cs.wisc.edu/~chaol/data/cs777/stam-stable_fluids.pdf
 
-[^5]: https://matthias-research.github.io/pages/tenMinutePhysics/17-fluidSim.pdf
+- https://matthias-research.github.io/pages/tenMinutePhysics/17-fluidSim.pdf
 
-[^6]: https://graphics.cs.cmu.edu/nsp/course/15-464/Fall09/papers/StamFluidforGames.pdf
+- https://graphics.cs.cmu.edu/nsp/course/15-464/Fall09/papers/StamFluidforGames.pdf
 
-[^7]: https://www.cs.ubc.ca/~rbridson/fluidsimulation/fluids_notes.pdf
+- https://www.cs.ubc.ca/~rbridson/fluidsimulation/fluids_notes.pdf
 
-[^8]: https://www.youtube.com/watch?v=Q78wvrQ9xsU
+- https://www.youtube.com/watch?v=Q78wvrQ9xsU
 
-[^9]: https://en.wikipedia.org/wiki/Vortex_shedding
+- https://en.wikipedia.org/wiki/Vortex_shedding
