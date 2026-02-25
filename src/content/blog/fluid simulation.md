@@ -1,5 +1,5 @@
 ---
-title: "Simulation that tries to mimic the physical fluid behaviour"
+title: "Fluid Simulation from Scratch: Navier-Stokes in 2D"
 description: ""
 pubDate: 2025-02-20
 draft: true
@@ -9,6 +9,18 @@ draft: true
 ## Introduction
 To begin, I want to tell you that I am not a physicist or a mathematician — I am a simple guy who loves these topics and loves computers. That is why I took this as a challenge and tried to understand and implement how fluids behave in our physical world and tried to simulate it. So don't take everything I will tell you as the truth, but rather take it as a starting point to study it better if you are interested in the field.
 I will reference all the materials I have studied in order to build a conceptual understanding of how to compute a simulation of a fluid.
+
+## What Is Fluid Simulation?
+
+Have you ever watched smoke curl off a candle, or cream slowly swirl into a cup of coffee? That movement — beautiful, seemingly chaotic, impossible to predict by eye — is what fluid simulation tries to capture and recreate inside a computer.
+
+The challenge is this: fluids don't move as a single object. Every tiny region of fluid pushes on its neighbors, which push on *their* neighbors, which push on more. Stir water in one spot and the effect travels everywhere. To simulate this on a computer, you'd need to track an enormous number of interactions happening all at once.
+
+The clever trick at the heart of this (and most fluid simulators) is to stop thinking about individual "drops" of fluid, and instead divide space into a grid. Each cell in the grid stores just two things: how fast the fluid is moving, and in which direction. Then, step by step, we update those values based on simple rules — and a believable fluid emerges.
+
+The math to do this *correctly* is non-trivial. But the underlying ideas are surprisingly physical and grounded in intuition. That's what this post tries to show.
+
+## Navier-Stokes equations
 
 Let's start with the equations of fluids. There is a famous set of equations called *the incompressible Navier-Stokes equations*, which are a set of differential equations that are supposed to hold true throughout the fluid.
 
@@ -203,7 +215,7 @@ solverStep(){
 
 ## Conclusions and Result
 I hope you enjoyed this and I hope you will try to understand it better with other sources that also cover important things like the CFL condition, which I haven't covered here because I focused only on the parts strictly needed to implement the simulation, and not on the parts that make it as stable as possible. I encourage you to go deeper into the field using whatever resource you want, but I list a bunch of useful resources that I used to build my understanding of the subject in the References section.
-To wrap it up, I show you a simple video where you can see the solver in action — it's a simulation of a wind tunnel with a cylindrical object in the middle, and as you can see it starts stable, then at a certain point the fluid starts oscillating, and finally reaches another steady state where we can see the effect of *Vortex shedding*.[^8]
+To wrap it up, I show you a simple video where you can see the solver in action — it's a simulation of a wind tunnel with a cylindrical object in the middle, and as you can see it starts stable, then at a certain point the fluid starts oscillating, and finally reaches another steady state where we can see the effect of *Vortex shedding*.[^4]
 
 
 <video controls>
@@ -213,11 +225,10 @@ To wrap it up, I show you a simple video where you can see the solver in action 
 
 
 Lastly there is also a web simulation application where you can play around with it.
+[web-simulation](https://vlnraf.itch.io/fluid-simulator)
 
-***Attach the link to the web app***
 
-
-I won't go further, but in the code you will also find a simulator written in GPU shaders, which is the one I used to produce the vortex shedding video. I won't go deeper into GPU programming here — I will probably do another post where I explain my knowledge on that topic and how you can port the simulator to the GPU, or you can just try it yourself. I can tell you that probably the only tricky part is the pressure solver, if you have also implemented an iterative algorithm like Gauss-Seidel where you read and update the same buffer of data.
+If you want to explore the full code, you can find it on [GitHub](https://github.com/vlnraf/fluid-simulation). In the code you will also find a simulator written in fragment shaders, which is the one I used to produce the vortex shedding video. I won't go deeper into GPU programming here, but I want to give you a brief idea of how the port works. Advection and the velocity correction are embarrassingly parallel — each cell is independent, so they map almost directly to shader code. The interesting part is the pressure solver: standard Gauss-Seidel can't run in parallel because each cell reads freshly updated neighbors. The solution is to switch to Jacobi iteration — instead of reading updated values in-place, each cell reads only from the previous iteration's buffer and writes to a new one, making every cell fully independent. In practice this is implemented with a ping-pong technique: two textures alternate roles as input and output each iteration, rendered via a full-screen fragment shader pass. I will probably do another post where I go deeper into this topic, but hopefully this gives you a starting point if you want to try it yourself.
 
 ## References
 [^1]: Bridson, R. (2015). *Fluid Simulation for Computer Graphics* (2nd ed.). CRC Press.
@@ -225,6 +236,8 @@ I won't go further, but in the code you will also find a simulator written in GP
 [^2]: https://www.youtube.com/watch?v=TrcCbdWwCBc&list=PLSQl0a2vh4HC5feHa6Rc5c0wbRTx56nF7
 
 [^3]: https://developer.nvidia.com/gpugems/gpugems/part-vi-beyond-triangles/chapter-38-fast-fluid-dynamics-simulation-gpu
+
+[^4]: https://en.wikipedia.org/wiki/Vortex_shedding
 
 - https://pages.cs.wisc.edu/~chaol/data/cs777/stam-stable_fluids.pdf
 
@@ -236,4 +249,3 @@ I won't go further, but in the code you will also find a simulator written in GP
 
 - https://www.youtube.com/watch?v=Q78wvrQ9xsU
 
-- https://en.wikipedia.org/wiki/Vortex_shedding
