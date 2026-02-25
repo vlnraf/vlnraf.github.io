@@ -1,7 +1,7 @@
 ---
 title: "Fluid Simulation from Scratch: Navier-Stokes in 2D"
 description: ""
-pubDate: 2025-02-20
+pubDate: 2026-02-20
 draft: true
 ---
 
